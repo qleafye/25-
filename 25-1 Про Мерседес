@@ -1,0 +1,21 @@
+cnt = 0 
+maxnum = 0 
+from fnmatch import *
+for i in range(7_000_000_15_95, 7_999_999_99_99+1,2005): 
+    if fnmatch(str(i), '7912*12??'): 
+        cnt += 1 
+        maxnum = max(maxnum, i) 
+print(maxnum, cnt)
+
+cnt=maxnum=0
+for c1 in '0123456789':
+    for c2 in '0123456789':
+        for c3 in '0123456789':
+            for c4 in '0123456789':
+                for c5 in '05':
+                    a = f'7912{c1}{c2}{c3}12{c4}{c5}'
+                    if int(a) % 2005 == 0:
+                        cnt += 1
+                        maxnum = max(maxnum, int(a))
+print(maxnum, cnt)
+    
