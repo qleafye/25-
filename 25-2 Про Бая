@@ -1,0 +1,40 @@
+def prime(x):
+    return x>1 and all(x%i!=0 for i in range(2,int(x**0.5)+1))
+def div(x):
+    d = set()
+    for i in range(2,int(x**0.5)+1):
+        if x%i == 0:
+            d.add(i)
+            d.add(x // i)
+    return sorted(d)
+
+for i in range(100_000, 1_000_000):     
+    d = [x for x in div(i) if prime(x)]
+    if len(d) == 7 and d[0] * d[1] * d[2] * d[3] * d[4] * d[5] * d[6] == i:
+        print(i)
+
+def prime(x):
+    a = 0
+    if x > 1:
+        for i in range(2, int(x**0.5)+1):
+            if x%i == 0:
+                a += 1
+    if a > 0: return 0
+    if a == 0: return 1
+
+def div(x):
+    d = set()
+    for i in range(2,int(x**0.5)+1):
+        if x%i == 0:
+            d.add(i)
+            d.add(x // i)
+    return sorted(d)
+
+for i in range(100_000, 1_000_000):
+    a = div(i)
+    d = []
+    for x in range(len(a)):
+        if prime(a[x]):
+            d.append(a[x])    
+    if len(d) == 7 and d[0]*d[1]*d[2]*d[3]*d[4]*d[5]*d[6] == i:
+        print(i)
